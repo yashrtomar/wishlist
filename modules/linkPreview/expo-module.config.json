@@ -1,0 +1,9 @@
+{
+    "platforms": ["ios", "android"],
+    "ios": {
+        "modules": ["LinkPreviewModule"]
+    },
+    "android": {
+        "modules": ["modules.linkPreview.LinkPreviewModule"]
+    }
+}
