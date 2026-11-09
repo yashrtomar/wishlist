@@ -1,56 +1,77 @@
-# Welcome to your Expo app 👋
+# Wishlist
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Wishlist is a small, offline-first mobile app for saving product and other item links in one place. It creates a preview from each link, keeps saved items on the device, and lets you browse them as a list or a two-column grid.
 
-## Get started
+## Features
 
-1. Install dependencies
+- Add an item by pasting a URL.
+- Fetch link metadata on iOS and Android to show a title, description, and image when available. If preview fetching fails or a field is missing, the item still saves with fallback text.
+- Switch between list and grid layouts, and delete items from the action menu.
+- Persist wishlist data locally with AsyncStorage. There is no account or cloud sync in the current implementation.
 
-   ```bash
-   npm install
-   ```
+## Requirements
 
-2. Start the app
+- Node.js and npm
+- The Expo development tooling used by the project
+- For native development builds: Xcode for iOS and Android Studio/Android SDK for Android
 
-   ```bash
-   npx expo start
-   ```
+## Run the app
 
-In the output, you'll find options to open the app in a
+Install dependencies:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **src/app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```sh
+npm install
 ```
 
-This command will move the starter code to the **example** directory and create a blank **src/app** directory where you can start developing.
+Start the Expo development server:
 
-### Other setup steps
+```sh
+npx expo start
+```
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+This project includes a custom native link-preview module (`modules/linkPreview`) for iOS and Android. Because Expo Go does not include this project-specific native module, use a development build to run the complete app. With the native toolchains installed, you can build and launch locally:
 
-## Learn more
+```sh
+npx expo run:ios
+npx expo run:android
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+The project also defines `npm run web`, but the custom preview module is registered only for iOS and Android; web support for that feature is not implemented.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Project layout
 
-## Join the community
+```text
+src/
+  App.tsx                         App entry point
+  HomeScreen.tsx                  Wishlist state, storage, and list/grid view
+  types.ts                        Wishlist item type
+  components/
+    Fab.tsx                       Add-item button
+    InputModal.tsx                URL entry and preview request
+    wishlistItems/                List/grid cards and item actions
+modules/
+  linkPreview/                    Expo native module (iOS and Android)
+assets/                            App icons and splash assets
+```
 
-Join our community of developers creating universal apps.
+The app stores its wishlist using the AsyncStorage. Each item contains an ID, URL, title, description, and image URL. Preview lookup is implemented separately on each platform: iOS uses Apple's LinkPresentation framework, while Android reads Open Graph and page metadata.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Useful scripts
+
+```sh
+npm run start       # Start the Expo development server
+npm run ios         # Build and launch on an iOS simulator/device
+npm run android     # Build and launch on an Android emulator/device
+npm run web         # Start the web target
+npm run lint        # Run Expo's lint command
+npm run reset-project # Run the included starter reset script
+```
+
+## Tech stack
+
+- Expo SDK 58 and React Native 0.88
+- TypeScript and React 19
+- AsyncStorage for on-device persistence
+- Expo Modules API for the custom native link-preview bridge
+- Apple's LinkPresentation on iOS and Jsoup metadata parsing on Android
+- Lucide React Native icons
