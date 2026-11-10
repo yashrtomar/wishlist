@@ -61,14 +61,11 @@ const HomeScreen = () => {
             <View style={styles.header}>
                 <Text style={styles.headerTitle}>My Wishlist</Text>
                 {wishlist.length > 0 && (
-                    <Pressable
-                        style={styles.toggleButton}
-                        onPress={() => setIsGridView(!isGridView)}
-                    >
+                    <Pressable onPress={() => setIsGridView(!isGridView)}>
                         {isGridView ? (
-                            <List size={20} color="#008080" />
+                            <List size={24} color="#008080" />
                         ) : (
-                            <LayoutGrid size={20} color="#008080" />
+                            <LayoutGrid size={24} color="#008080" />
                         )}
                     </Pressable>
                 )}
@@ -125,7 +122,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        paddingHorizontal: 20,
+        padding: 20,
         borderBottomWidth: 1,
         borderColor: "#1E1E1E",
     },
@@ -133,9 +130,6 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: "bold",
         color: "#FFFFFF",
-    },
-    toggleButton: {
-        padding: 20,
     },
     toggleText: {
         color: "#008080",
