@@ -19,7 +19,7 @@
                 // "monochromeImage": "./assets/images/android-icon-monochrome.png"
             },
             "predictiveBackGestureEnabled": false,
-            "package": "com.anonymous.wishlist"
+            "package": "com.pluty.wishlist"
         },
         // "web": {
         //   "output": "server",

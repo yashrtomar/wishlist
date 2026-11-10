@@ -1,0 +1,9 @@
+modules.linkPreview.linkpreview-pngs-0 /home/yash/dev/projects/wishlist/modules/linkPreview/android/build/generated/res/pngs/release
+modules.linkPreview.linkpreview-updated_navigation_xml-1 /home/yash/dev/projects/wishlist/modules/linkPreview/android/build/generated/updated_navigation_xml/release
+modules.linkPreview.linkpreview-mergeReleaseResources-2 /home/yash/dev/projects/wishlist/modules/linkPreview/android/build/intermediates/incremental/release/mergeReleaseResources/merged.dir
+modules.linkPreview.linkpreview-mergeReleaseResources-3 /home/yash/dev/projects/wishlist/modules/linkPreview/android/build/intermediates/incremental/release/mergeReleaseResources/stripped.dir
+modules.linkPreview.linkpreview-release-4 /home/yash/dev/projects/wishlist/modules/linkPreview/android/build/intermediates/merged_res/release/mergeReleaseResources
+modules.linkPreview.linkpreview-release-5 /home/yash/dev/projects/wishlist/modules/linkPreview/android/build/intermediates/packaged_res/release/packageReleaseResources
+modules.linkPreview.linkpreview-main-6 /home/yash/dev/projects/wishlist/modules/linkPreview/android/src/main/res
+modules.linkPreview.linkpreview-release-7 /home/yash/dev/projects/wishlist/modules/linkPreview/android/src/release/res
+gradleHome-0 /home/yash/.gradle
